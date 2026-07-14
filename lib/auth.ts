@@ -1,4 +1,4 @@
-import jwt from "jsonwebtoken";
+import { SignJWT, jwtVerify, type JWTPayload } from "jose";
 import bcrypt from "bcryptjs";
 
 const JWT_SECRET = process.env.JWT_SECRET || "fallback-secret";
@@ -10,21 +10,27 @@ export interface JwtPayload {
   role: string;
 }
 
+const getSecret = () => new TextEncoder().encode(JWT_SECRET);
+
 export async function validateCredentials(
   email: string,
-  password: string
+  password: string,
 ): Promise<boolean> {
   if (email !== ADMIN_EMAIL) return false;
   return password === ADMIN_PASSWORD;
 }
 
-export function generateToken(payload: JwtPayload): string {
-  return jwt.sign(payload, JWT_SECRET, { expiresIn: "7d" });
+export async function generateToken(payload: JwtPayload): Promise<string> {
+  return new SignJWT(payload as unknown as JWTPayload)
+    .setProtectedHeader({ alg: "HS256" })
+    .setExpirationTime("7d")
+    .sign(getSecret());
 }
 
-export function verifyToken(token: string): JwtPayload | null {
+export async function verifyToken(token: string): Promise<JwtPayload | null> {
   try {
-    return jwt.verify(token, JWT_SECRET) as JwtPayload;
+    const { payload } = await jwtVerify(token, getSecret());
+    return payload as unknown as JwtPayload;
   } catch {
     return null;
   }
