@@ -21,7 +21,6 @@ export interface StudentType {
   phone: string;
   courseId: number;
   teacherId: number;
-  batchId: string;
   timing: string;
   days: string;
   mode: string;

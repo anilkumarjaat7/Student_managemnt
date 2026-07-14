@@ -18,10 +18,9 @@ export const teacherSchema = z.object({
 
 export const studentSchema = z.object({
   studentName: z.string().min(1),
-  phone: z.string().min(10).regex(/^\d+$/),
-  courseId: z.number(),
-  teacherId: z.number(),
-  batchId: z.string().min(1),
+  phone: z.string().min(10),
+  courseId: z.coerce.number(),
+  teacherId: z.coerce.number(),
   timing: z.string().min(1),
   days: z.string().min(1),
   mode: z.string().min(1),
