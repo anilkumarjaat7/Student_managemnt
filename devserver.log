@@ -1,0 +1,29 @@
+
+> student-management@0.1.0 dev
+> next dev
+
+▲ Next.js 16.2.10 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.1.48:3000
+- Environments: .env
+✓ Ready in 674ms
+⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+⚠ Slow filesystem detected. The benchmark took 278ms. If C:\Users\Rahul Sharma\Downloads\Anilcode\STUDENT_MANAGMENT\Student_managemnt\.next/dev is a network drive, consider moving it to a local folder.
+See more: https://nextjs.org/docs/app/guides/local-development
+
+(node:16188) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ GET /api/courses?id=13 200 in 1181ms (next.js: 376ms, application-code: 805ms)
+ GET /api/students 200 in 261ms (next.js: 57ms, application-code: 204ms)
+ GET /api/teachers 200 in 154ms (next.js: 50ms, application-code: 104ms)
+ POST /api/courses 201 in 572ms (next.js: 5ms, application-code: 567ms)
+ POST /api/teachers 201 in 89ms (next.js: 3ms, application-code: 86ms)
+ POST /api/students 201 in 446ms (next.js: 4ms, application-code: 442ms)
+ PUT /api/students 200 in 913ms (next.js: 6ms, application-code: 907ms)
